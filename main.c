@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "structs.h"
 #include "cityFunctions.c"
-#include "board.c"
+#include "matAdj.h"
 
 
 int main(){
@@ -16,8 +16,8 @@ int main(){
         City povos[maxCitys];
         readCitys(povos, maxCitys, arq);
 
-        Board *C = createBoard(maxCitys);
-        readBoard(C, arq, maxPaths);
+        MatAdj *C = createMatAdj(maxCitys);
+        readMatAdj(C, arq, maxPaths);
 
 
 
