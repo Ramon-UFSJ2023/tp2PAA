@@ -7,11 +7,12 @@
 
 int main(){
     int instancias=0, maxCitys=0, maxDist=0, maxWeight=0, maxPaths=0;
-    scanf("%d", &instancias);
     FILE *arq = fopen("entrada.txt", "r");
+    fscanf(arq ,"%d", &instancias);
+    
 
     while(instancias > 0){
-        scanf("%d %d %d %d", &maxCitys, &maxDist, &maxWeight, &maxPaths);
+        fscanf(arq, "%d %d %d %d", &maxCitys, &maxDist, &maxWeight, &maxPaths);
 
         City povos[maxCitys];
         readCitys(povos, maxCitys, arq);
