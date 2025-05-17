@@ -15,15 +15,12 @@ Board* createBoard(int n) {
     return t;
 }
 
-void readBoard(Board *t, FILE *file) {
-    for (int i = t->rows_columns - 1; i >= 0; i--) {
-        for (int j = 0; j < t->rows_columns; j++) {
-            if ((i + j) % 2 == 0) {
-                int value;
-                if (fscanf(file, "%d", &value) == 1) {
-                    t->board[i][j] = value;
-                }
-            }
-        }
+void readBoard(Board *MatAdj, FILE *arqEnt, int maxPaths){
+    int cityNow=0, cityPos=0, cityAtoB_Weight=0;
+
+    for(int i=0; i< maxPaths; i++){
+        fscanf(arqEnt, "%d %d %d", &cityNow, &cityPos, &cityAtoB_Weight);
+        MatAdj->board[cityNow][cityPos] = cityAtoB_Weight;
+        cityAtoB_Weight=0;
     }
 }

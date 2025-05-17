@@ -10,6 +10,6 @@ typedef struct {
 } Board;
 
 Board* createBoard(int n);
-void readBoard(Board *t, FILE *file);
+void readBoard(Board *t, FILE *file, int maxPaths);
 
 #endif
