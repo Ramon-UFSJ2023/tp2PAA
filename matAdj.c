@@ -16,11 +16,12 @@ MatAdj* createMatAdj(int n) {
 }
 
 void readMatAdj(MatAdj *MatAdj, FILE *arqEnt, int maxPaths){
-    int cityNow=0, cityPos=0, cityAtoB_Weight=0;
+    int cityOrigem=0, cityDestiny=0, cityAtoB_Weight=0;
 
     for(int i=0; i< maxPaths; i++){
-        fscanf(arqEnt, "%d %d %d", &cityNow, &cityPos, &cityAtoB_Weight);
-        MatAdj->matAdj[cityNow][cityPos] = cityAtoB_Weight;
+        fscanf(arqEnt, "%d %d %d", &cityOrigem, &cityDestiny, &cityAtoB_Weight);
+        MatAdj->matAdj[cityOrigem][cityDestiny] = cityAtoB_Weight;
+        MatAdj->matAdj[cityDestiny][cityOrigem] = cityAtoB_Weight;
         cityAtoB_Weight=0;
     }
 }
