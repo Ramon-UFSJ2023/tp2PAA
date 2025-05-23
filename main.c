@@ -3,6 +3,7 @@
 #include "structs.h"
 #include "cityFunctions.c"
 #include "matAdj.h"
+#include "progMod.h"
 
 
 int main(){
@@ -17,12 +18,13 @@ int main(){
         City povos[maxCitys];
         readCitys(povos, maxCitys, arq);
 
-        MatAdj *CityPovos = createMatAdj(maxCitys);
-        readMatAdj(CityPovos, arq, maxPaths);
+        MatAdj *CityPovosDist = createMatAdj(maxCitys);
+        readMatAdj(CityPovosDist, arq, maxPaths);
+        
+        functionProgMod(povos, CityPovosDist);
 
 
-
-        freeMatAdj(CityPovos);
+        freeMatAdj(CityPovosDist);
         maxCitys=0, maxDist=0, maxWeight=0, maxPaths=0;
         instancias--;
     }
