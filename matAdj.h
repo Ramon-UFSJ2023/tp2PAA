@@ -11,5 +11,6 @@ typedef struct {
 
 MatAdj* createMatAdj(int n);
 void readMatAdj(MatAdj *t, FILE *file, int maxPaths);
+void freeMatAdj(MatAdj *t);
 
 #endif

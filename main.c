@@ -17,11 +17,12 @@ int main(){
         City povos[maxCitys];
         readCitys(povos, maxCitys, arq);
 
-        MatAdj *C = createMatAdj(maxCitys);
-        readMatAdj(C, arq, maxPaths);
+        MatAdj *CityPovos = createMatAdj(maxCitys);
+        readMatAdj(CityPovos, arq, maxPaths);
 
 
 
+        freeMatAdj(CityPovos);
         maxCitys=0, maxDist=0, maxWeight=0, maxPaths=0;
         instancias--;
     }

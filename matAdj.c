@@ -25,3 +25,11 @@ void readMatAdj(MatAdj *MatAdj, FILE *arqEnt, int maxPaths){
         cityAtoB_Weight=0;
     }
 }
+
+void freeMatAdj(MatAdj *freeMat){
+    for (int i = 0; i < freeMat->rows_columns; i++){
+        free(freeMat->matAdj[i]);
+    }
+    free(freeMat->matAdj);
+    free(freeMat);
+}
