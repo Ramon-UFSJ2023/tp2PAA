@@ -6,7 +6,7 @@
 #include "matAdj.h"
 #include <limits.h>
 
-void functionProgMod(City povos[], MatAdj *CityPovosDist, int max_Weight, int max_Dist);
+void functionProgMod(City povos[], MatAdj *CityPovosDist, int maxPeso, int max_Dist);
 
 
 #endif
