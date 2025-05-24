@@ -3,8 +3,8 @@
 #include <stdio.h>
 
     typedef struct City{
-        int Weight_Soldier;
-        int Hability;
+        int peso_soldado;
+        int habilidade;
     }City;
     
     

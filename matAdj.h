@@ -6,11 +6,10 @@
 typedef struct {
     int **matAdj;
     int rows_columns;
-
 } MatAdj;
 
-MatAdj* createMatAdj(int n);
-void readMatAdj(MatAdj *t, FILE *file, int maxPaths);
+MatAdj* criaMatAdj(int n);
+void lerMatAdj(MatAdj *t, FILE *file, int maxCaminhos);
 void freeMatAdj(MatAdj *t);
 
 #endif
