@@ -14,14 +14,9 @@ int main(){
 
     while(instancias>0){
         if(fscanf(arqEnt, "%d %d %d %d", &maxCidades, &maxDist, &maxPeso, &maxCaminhos)!= 4){break;}
+
         if(maxCidades<=0){
             fprintf(stderr, "Numero de cidades Invalido.\n");
-            City *povos = malloc(maxCaminhos*sizeof(City));
-            lerCidades(povos, maxCidades, arqEnt);
-        
-            MatAdj *mundoZambis = criaMatAdj(maxCidades);
-            lerMatAdj(mundoZambis, arqEnt, maxCaminhos);
-
             instancias--;
             continue;
         }
