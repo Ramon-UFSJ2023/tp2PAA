@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "structs.h"
-#include "cityFunctions.c"
+#include "cityFunctions.h"
 #include "matAdj.h"
 #include "progMod.h"
 
@@ -13,7 +13,7 @@ int main(){
     if(fscanf(arqEnt, "%d", &instancias)!= 1){fclose(arqEnt); exit(1);}
 
     while(instancias>0){
-        int a, *n;
+        int a=0;
         if(fscanf(arqEnt, "%d %d %d %d", &maxCidades, &maxDist, &maxPeso, &maxCaminhos)!= 4){break;}
 
         if(maxCidades<=0){
@@ -22,19 +22,20 @@ int main(){
             continue;
         }
 
-        City *povos = malloc(maxCaminhos*sizeof(City));
+        City *povos = malloc(maxCidades*sizeof(City));
         if(povos == NULL){fprintf(stderr, "Erro na alocação de cidades");break;}
         lerCidades(povos, maxCidades, arqEnt);
 
         MatAdj *mundoZambis = criaMatAdj(maxCidades);
         lerMatAdj(mundoZambis, arqEnt, maxCaminhos);
+        printf("Teste.\n");
+        a = functionProgMod(povos, mundoZambis, maxPeso, maxDist);
 
-        a = functionProgMod(povos, mundoZambis, maxPeso, maxDist, a,n);
-
+        printf("%d\n\n", a);
     
         freeMatAdj(mundoZambis);
         free(povos);
-
+        instancias--;
     }
     fclose(arqEnt);
     return 0;
