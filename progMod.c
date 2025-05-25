@@ -19,7 +19,6 @@ int functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_D
     }
     for(int cidades =0; cidades<cidadePovosDist->rows_columns;cidades++) tabelaDinamica[cidades][0][0] = 0;
     
-    
     for(int distPercorrida =0; distPercorrida <totalDistancias; distPercorrida++){
         for(int pesoCarregado = 0; pesoCarregado< totalPeso; pesoCarregado++){
             for(int cidade =0; cidade< cidadePovosDist->rows_columns; cidade++){
@@ -30,17 +29,19 @@ int functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_D
                 int pesoSoldado = povos[cidade].peso_soldado;
                 int habilidadeCidadeAtual = povos[cidade].habilidade;
                 int maxRecrutavel = (maxPeso-pesoCarregado)/pesoSoldado;
-                for(int quantidade =1; quantidade <= maxRecrutavel; quantidade++){
+
+                for(int quantidade=1; quantidade <= maxRecrutavel; quantidade++){
                     int novoPeso = pesoCarregado+(quantidade*pesoSoldado);
                     int novaHabilidade = habilidadeAtual+(quantidade*habilidadeCidadeAtual);
                     if(novaHabilidade >tabelaDinamica[cidade][distPercorrida][novoPeso]){
                         tabelaDinamica[cidade][distPercorrida][novoPeso] =novaHabilidade;
                     }
                 }
+
                 //indo para outra cidade
                 for(int cidadeVizinha =0; cidadeVizinha< cidadePovosDist->rows_columns; cidadeVizinha++){
                     int distanciaCidadeAtoB = cidadePovosDist->matAdj[cidade][cidadeVizinha];
-                    if(distanciaCidadeAtoB < INACESSIVEL && distPercorrida+ distanciaCidadeAtoB <totalDistancias){
+                    if(distanciaCidadeAtoB <= INACESSIVEL && (distPercorrida+ distanciaCidadeAtoB) <totalDistancias){
                         int habilidadeDestino = tabelaDinamica[cidadeVizinha][distPercorrida+distanciaCidadeAtoB][pesoCarregado];
                         if(habilidadeAtual > habilidadeDestino) tabelaDinamica[cidadeVizinha][distPercorrida+distanciaCidadeAtoB][pesoCarregado] = habilidadeAtual;
                     }
