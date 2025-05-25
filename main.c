@@ -28,7 +28,6 @@ int main(){
 
         MatAdj *mundoZambis = criaMatAdj(maxCidades);
         lerMatAdj(mundoZambis, arqEnt, maxCaminhos);
-        printf("Teste.\n");
         a = functionProgMod(povos, mundoZambis, maxPeso, maxDist);
 
         printf("%d\n\n", a);

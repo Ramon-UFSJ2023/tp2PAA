@@ -1,5 +1,4 @@
 #include "progMod.h"
-int maximo(int a, int b){return a>b ? a : b;}
 #define INACESSIVEL (INT_MIN/2)
 
 int functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_Dist){
