@@ -26,4 +26,4 @@ clean:
 
 # Regra para rodar o programa
 run: $(EXEC)
-	./$(EXEC)
+	./$(EXEC) 

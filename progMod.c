@@ -23,10 +23,11 @@ int functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_D
         for(int pesoCarregado = 0; pesoCarregado< totalPeso; pesoCarregado++){
             for(int cidade =0; cidade< cidadePovosDist->rows_columns; cidade++){
                 int habilidadeAtual = tabelaDinamica[cidade][distPercorrida][pesoCarregado];
-                if(habilidadeAtual < INACESSIVEL) continue;
+                if(habilidadeAtual <= INACESSIVEL) continue;
 
                 //recrutamento
                 int pesoSoldado = povos[cidade].peso_soldado;
+                if(pesoSoldado <=0) continue;
                 int habilidadeCidadeAtual = povos[cidade].habilidade;
                 int maxRecrutavel = (maxPeso-pesoCarregado)/pesoSoldado;
 
@@ -41,7 +42,7 @@ int functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_D
                 //indo para outra cidade
                 for(int cidadeVizinha =0; cidadeVizinha< cidadePovosDist->rows_columns; cidadeVizinha++){
                     int distanciaCidadeAtoB = cidadePovosDist->matAdj[cidade][cidadeVizinha];
-                    if(distanciaCidadeAtoB <= INACESSIVEL && (distPercorrida+ distanciaCidadeAtoB) <totalDistancias){
+                    if(distanciaCidadeAtoB != INT_MAX && (distPercorrida+ distanciaCidadeAtoB) <totalDistancias){
                         int habilidadeDestino = tabelaDinamica[cidadeVizinha][distPercorrida+distanciaCidadeAtoB][pesoCarregado];
                         if(habilidadeAtual > habilidadeDestino) tabelaDinamica[cidadeVizinha][distPercorrida+distanciaCidadeAtoB][pesoCarregado] = habilidadeAtual;
                     }
@@ -58,5 +59,15 @@ int functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_D
             }
         }
     }
+
+
+    for(int cidade=0; cidade< cidadePovosDist->rows_columns;cidade++){
+        for(int distPercorrida=0; distPercorrida< totalDistancias;distPercorrida++){
+            free(tabelaDinamica[cidade][distPercorrida]);
+        }
+        free(tabelaDinamica[cidade]);
+    }
+    free(tabelaDinamica);
+
     return habilidadeMaximas;
 }

@@ -2,7 +2,7 @@
 #include "matAdj.h"
 #include <limits.h>
 
-#define INACESSIVEL (INT_MIN/2)
+#define INACESSIVEL_MAT INT_MAX
 
 MatAdj* criaMatAdj(int n) {
     MatAdj *t = (MatAdj*)malloc(sizeof(MatAdj));
@@ -21,7 +21,7 @@ MatAdj* criaMatAdj(int n) {
             exit(1);
         }
         for(int j =0; j<n; j++){
-            t->matAdj[i][j] = (INT_MIN/2);
+            t->matAdj[i][j] = INACESSIVEL_MAT;
         }
     }
     return t;
