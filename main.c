@@ -13,7 +13,6 @@ int main(){
     if(fscanf(arqEnt, "%d", &instancias)!= 1){fclose(arqEnt); exit(1);}
 
     while(instancias>0){
-        int a=0;
         if(fscanf(arqEnt, "%d %d %d %d", &maxCidades, &maxDist, &maxPeso, &maxCaminhos)!= 4){break;}
 
         if(maxCidades<=0){
@@ -28,9 +27,7 @@ int main(){
 
         MatAdj *mundoZambis = criaMatAdj(maxCidades);
         lerMatAdj(mundoZambis, arqEnt, maxCaminhos);
-        a = functionProgMod(povos, mundoZambis, maxPeso, maxDist);
-
-        printf("%d\n\n", a);
+        functionProgMod(povos, mundoZambis, maxPeso, maxDist);
     
         freeMatAdj(mundoZambis);
         free(povos);

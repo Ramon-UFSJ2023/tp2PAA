@@ -6,7 +6,14 @@
 #include "matAdj.h"
 #include <limits.h>
 
-int functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_Dist);
+void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_Dist);
+
+typedef struct caminhoReverso{
+    int cidade;
+    int dist;
+    int peso;
+    int recrutados;
+} caminhoReverso;
 
 
 #endif
