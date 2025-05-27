@@ -71,6 +71,7 @@ void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_
     int dstAtual = distanciaFinal;
     int psAtual = pesoFinal;
     int indiceCaminho=0;
+    
     while(1){
         int achou=0;
         int pesoSoldado = povos[cddAtual].peso_soldado;
