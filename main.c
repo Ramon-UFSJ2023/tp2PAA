@@ -7,14 +7,22 @@
 #include "heuristica.h"
 
 
-int main(){
+int main(int argc, char *argv[]){
     int instancias=0, maxCidades=0, maxDist=0, maxPeso=0, maxCaminhos=0, escolha =0;
-    FILE *arqEnt = fopen("entrada.txt", "r");
+    char *entrada = NULL;
+    for(int i=1; i<argc; i++) {
+        if(strcmp(argv[i], "-i") ==0 && i+1<argc) {
+            entrada =argv[i+1];
+        }
+    }
+
+    FILE *arqEnt = fopen(entrada, "r");
     FILE *arqSaida = fopen("saida.txt", "w");
     if(arqEnt == NULL) exit(1);
     if(fscanf(arqEnt, "%d", &instancias)!= 1){fclose(arqEnt); exit(1);}
     printf("Digite 0 para Prog.Modular\nDigite 1 para Heuristica\n");
     scanf("%d", &escolha);
+
     while(instancias>0){
         switch (escolha){
         case 0:

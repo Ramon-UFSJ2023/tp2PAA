@@ -7,7 +7,7 @@ SRCS    := main.c cityFunctions.c matAdj.c progMod.c heuristica.c
 OBJS    := $(SRCS:.c=.o)
 
 # Arquivo de saída
-TARGET  := programa
+TARGET  := tp2
 
 # Dependências de headers (por segurança, mas o make cuidará automaticamente se um .h mudar)
 DEPS    := cityFunctions.h matAdj.h progMod.h heuristica.h structs.h
