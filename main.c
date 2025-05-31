@@ -18,7 +18,7 @@ int main(){
     while(instancias>0){
         switch (escolha){
         case 0:
-            if(fscanf(arqEnt, "%d %d %d %d", &maxCidades, &maxDist, &maxPeso, &maxCaminhos)!= 4){break;}
+            if(fscanf(arqEnt, "%d %d %d %d", &maxCidades, &maxDist, &maxPeso, &maxCaminhos)!= 4){instancias--;break;}
             if(maxCidades<=0){
                 fprintf(stderr, "Numero de cidades Invalido.\n");
                 instancias--;
@@ -34,13 +34,13 @@ int main(){
             freeMatAdjProgM(mundoZambisProg);
             free(povos);
             instancias--;
-            escolha = 1;
-            printf("Teste\n");
+            escolha = 0;
             break;
         case 1:
             if (fscanf(arqEnt, "%d %d %d %d", &maxCidades, &maxDist, &maxPeso, &maxCaminhos) != 4) {
                 fprintf(stderr, "Error reading instance parameters.\n");
                 fprintf(arqSaida, "Error processing instance.\n");
+                instancias--;
                 break;
             }
 
@@ -81,8 +81,7 @@ int main(){
             freeMatAdj(mundoZambis);
             free(povosHeuristica);
             instancias--;
-            escolha =0;
-            printf("Teste2\n");
+            escolha =1;
             break;
         
         default:

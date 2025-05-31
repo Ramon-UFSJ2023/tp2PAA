@@ -124,6 +124,7 @@ void functionProgMod(City *povos, MatAdjProgModular *cidadePovosDist, int maxPes
             fprintf(arqSaida, " %d %d", i+1, sddPorCidade[i]);
         }
     }
+    fprintf(arqSaida, "\n");
 
     printf("\n");
     for(int cidade=0; cidade< cidadePovosDist->rows_columns;cidade++){
