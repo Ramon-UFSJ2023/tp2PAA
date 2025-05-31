@@ -1,7 +1,7 @@
 #include "progMod.h"
 #define INACESSIVEL (INT_MIN/2)
 
-void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_Dist){
+void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_Dist, FILE* arqSaida){
     int totalDistancias= max_Dist+1;
     int totalPeso =maxPeso+1;
     int cidadeFinal =0, pesoFinal=0, distanciaFinal=0;
@@ -109,7 +109,7 @@ void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_
         }
         if(!moveu) break;
     }
-    printf("%d", habilidadeMaximas);
+    fprintf(arqSaida,"%d", habilidadeMaximas);
     
     int sddPorCidade[qtdPovos];
     for(int i=0; i<qtdPovos;i++) sddPorCidade[i]=0;
@@ -121,7 +121,7 @@ void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_
 
     for(int i=0; i <qtdPovos;i++){
         if(apareceu[i]){
-            printf(" %d %d", i+1, sddPorCidade[i]);
+            fprintf(arqSaida, " %d %d", i+1, sddPorCidade[i]);
         }
     }
 

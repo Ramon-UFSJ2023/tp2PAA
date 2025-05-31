@@ -1,5 +1,5 @@
 #ifndef CITYFUNCTIONS_H
 #define CITYFUNCTIONS_H
 #include "structs.h"
-    void lerCidades(City vetorCidades[], int maxCidade, FILE *entArq);
+    void lerCidadesProg(City vetorCidades[], int maxCidade, FILE *entArq);
 #endif

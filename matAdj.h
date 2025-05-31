@@ -8,8 +8,8 @@ typedef struct {
     int rows_columns;
 } MatAdj;
 
-MatAdj* criaMatAdj(int n);
-void lerMatAdj(MatAdj *t, FILE *file, int maxCaminhos);
-void freeMatAdj(MatAdj *t);
+MatAdj* criaMatAdjProg(int n);
+void lerMatAdjProg(MatAdj *t, FILE *file, int maxCaminhos);
+void freeMatAdjProg(MatAdj *t);
 
 #endif
