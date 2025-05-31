@@ -4,12 +4,12 @@
 #include <stdio.h>
 
 typedef struct {
-    int **matAdj;
+    int **matAdjProgM;
     int rows_columns;
-} MatAdj;
+} MatAdjProgModular;
 
-MatAdj* criaMatAdjProg(int n);
-void lerMatAdjProg(MatAdj *t, FILE *file, int maxCaminhos);
-void freeMatAdjProg(MatAdj *t);
+MatAdjProgModular* criaMatAdjProgMProg(int n);
+void lerMatAdjProgMProg(MatAdjProgModular *t, FILE *file, int maxCaminhos);
+void freeMatAdjProgMProg(MatAdjProgModular *t);
 
 #endif

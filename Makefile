@@ -1,29 +1,30 @@
-# Nome do executável
-EXEC = programa
+# Nome do compilador e flags
+CC      := gcc
+CFLAGS  := -Wall -Wextra -std=c11
 
-# Compilador
-CC = gcc
+# Lista de fontes e objetos
+SRCS    := main.c cityFunctions.c matAdj.c progMod.c heuristica.c
+OBJS    := $(SRCS:.c=.o)
 
-# Flags de compilação
-CFLAGS = -Wall -O2
+# Arquivo de saída
+TARGET  := app
 
-# Arquivos-fonte
-SRCS = main.c matAdj.c cityFunctions.c progMod.c
+# Dependências de headers (por segurança, mas o make cuidará automaticamente se um .h mudar)
+DEPS    := cityFunctions.h matAdj.h progMod.h heuristica.h structs.h
 
-# Arquivos-objeto (substitui .c por .o)
-OBJS = $(SRCS:.c=.o)
+.PHONY: all clean
 
-# Regra principal
-all: $(EXEC)
+all: $(TARGET)
 
-# Como compilar o executável
-$(EXEC): $(OBJS)
-	$(CC) $(CFLAGS) -o $(EXEC) $(OBJS)
+# Regra para gerar o executável a partir dos objetos
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
 
-# Regra para limpar arquivos compilados
+# Regra genérica para compilar cada .c para .o
+# O make vai reconstruir se o .c ou qualquer .h incluído mudar
+%.o: %.c $(DEPS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Limpar arquivos gerados
 clean:
-	rm -f $(OBJS) $(EXEC)
-
-# Regra para rodar o programa
-run: $(EXEC)
-	./$(EXEC) 
+	rm -f $(OBJS) $(TARGET)

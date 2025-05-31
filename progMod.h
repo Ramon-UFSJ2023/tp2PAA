@@ -6,7 +6,7 @@
 #include "matAdj.h"
 #include <limits.h>
 
-void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_Dist, FILE* arqSaida);
+void functionProgMod(City *povos, MatAdjProgModular *cidadePovosDist, int maxPeso, int max_Dist, FILE* arqSaida);
 
 typedef struct caminhoReverso{
     int cidade;

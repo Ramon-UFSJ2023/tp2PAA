@@ -29,7 +29,7 @@ int main(){
             if(povos == NULL){fprintf(stderr, "Erro na alocação de cidades");break;}
             lerCidadesProg(povos, maxCidades, arqEnt);
 
-            MatAdj *mundoZambis = criaMatAdjProg(maxCidades);
+            MatAdjProgModular *mundoZambis = criaMatAdjProg(maxCidades);
             lerMatAdjProg(mundoZambis, arqEnt, maxCaminhos);
             functionProgMod(povos, mundoZambis, maxPeso, maxDist, arqSaida);
             freeMatAdjProg(mundoZambis);
@@ -76,8 +76,6 @@ int main(){
             fprintf(arqSaida, "Entrada de escolha errada.\n");
             break;
         }
-    
-
     }
     fclose(arqEnt);
     fclose(arqSaida);

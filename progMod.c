@@ -1,7 +1,7 @@
 #include "progMod.h"
 #define INACESSIVEL (INT_MIN/2)
 
-void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_Dist, FILE* arqSaida){
+void functionProgMod(City *povos, MatAdjProgModular *cidadePovosDist, int maxPeso, int max_Dist, FILE* arqSaida){
     int totalDistancias= max_Dist+1;
     int totalPeso =maxPeso+1;
     int cidadeFinal =0, pesoFinal=0, distanciaFinal=0;
@@ -42,7 +42,7 @@ void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_
 
                 //indo para outra cidade
                 for(int cidadeVizinha =0; cidadeVizinha< cidadePovosDist->rows_columns; cidadeVizinha++){
-                    int distanciaCidadeAtoB = cidadePovosDist->matAdj[cidade][cidadeVizinha];
+                    int distanciaCidadeAtoB = cidadePovosDist->matAdjProgM[cidade][cidadeVizinha];
                     if(distanciaCidadeAtoB != INT_MAX && (distPercorrida+ distanciaCidadeAtoB) <totalDistancias){
                         int habilidadeDestino = tabelaDinamica[cidadeVizinha][distPercorrida+distanciaCidadeAtoB][pesoCarregado];
                         if(habilidadeAtual > habilidadeDestino) tabelaDinamica[cidadeVizinha][distPercorrida+distanciaCidadeAtoB][pesoCarregado] = habilidadeAtual;
@@ -95,7 +95,7 @@ void functionProgMod(City *povos, MatAdj *cidadePovosDist, int maxPeso, int max_
 
         int moveu=0;
         for(int cidadeAnterior = 0; cidadeAnterior<qtdPovos; cidadeAnterior++){
-            int distAresta = cidadePovosDist->matAdj[cidadeAnterior][cddAtual];
+            int distAresta = cidadePovosDist->matAdjProgM[cidadeAnterior][cddAtual];
             if(distAresta != INT_MAX && dstAtual-distAresta>=0){
                 int habilidadeAnterior = tabelaDinamica[cidadeAnterior][dstAtual-distAresta][psAtual];
                 if(habilidadeAnterior == tabelaDinamica[cddAtual][dstAtual][psAtual]){
