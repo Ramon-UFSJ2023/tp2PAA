@@ -31,7 +31,7 @@ int main(){
 
             MatAdj *mundoZambis = criaMatAdjProg(maxCidades);
             lerMatAdjProg(mundoZambis, arqEnt, maxCaminhos);
-            functionProgMod(povos, mundoZambis, maxPeso, maxDist);
+            functionProgMod(povos, mundoZambis, maxPeso, maxDist, arqSaida);
             freeMatAdjProg(mundoZambis);
             free(povos);
             instancias--;
