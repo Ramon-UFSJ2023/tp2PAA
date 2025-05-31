@@ -17,7 +17,6 @@ int main(){
     scanf("%d", &escolha);
     while(instancias>0){
         switch (escolha){
-
         case 0:
             if(fscanf(arqEnt, "%d %d %d %d", &maxCidades, &maxDist, &maxPeso, &maxCaminhos)!= 4){break;}
             if(maxCidades<=0){
@@ -38,8 +37,20 @@ int main(){
             escolha = 1;
             printf("Teste\n");
             break;
-
         case 1:
+            if (fscanf(arqEnt, "%d %d %d %d", &maxCidades, &maxDist, &maxPeso, &maxCaminhos) != 4) {
+                fprintf(stderr, "Error reading instance parameters.\n");
+                fprintf(arqSaida, "Error processing instance.\n");
+                break;
+            }
+
+            if (maxCidades <= 0){
+                fprintf(stderr, "Invalid number of cities: %d for an instance.\n", maxCidades);
+                fprintf(arqSaida, "0\n"); 
+
+                instancias--;
+                continue;
+            }
             Cidade *povosHeuristica = malloc(maxCidades * sizeof(Cidade));
             for(int i=0; i<maxCidades; ++i) {
                         povosHeuristica[i].id = 0; 
