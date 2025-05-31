@@ -8,8 +8,8 @@ typedef struct {
     int rows_columns;
 } MatAdjProgModular;
 
-MatAdjProgModular* criaMatAdjProgMProg(int n);
-void lerMatAdjProgMProg(MatAdjProgModular *t, FILE *file, int maxCaminhos);
-void freeMatAdjProgMProg(MatAdjProgModular *t);
+MatAdjProgModular* criaMatAdjProgM(int n);
+void lerMatAdjProgM(MatAdjProgModular *t, FILE *file, int maxCaminhos);
+void freeMatAdjProgM(MatAdjProgModular *t);
 
 #endif

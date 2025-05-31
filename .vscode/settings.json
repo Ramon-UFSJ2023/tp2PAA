@@ -4,6 +4,7 @@
         "stdbool.h": "c",
         "progmod.h": "c",
         "matadj.h": "c",
-        "cityfunctions.h": "c"
+        "cityfunctions.h": "c",
+        "stdio.h": "c"
     }
 }

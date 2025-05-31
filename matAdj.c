@@ -4,7 +4,7 @@
 
 #define INACESSIVEL_MAT INT_MAX
 
-MatAdjProgModular* criaMatAdjProg(int n) {
+MatAdjProgModular* criaMatAdjProgM(int n){
     MatAdjProgModular *t = (MatAdjProgModular*)malloc(sizeof(MatAdjProgModular));
     if(t== NULL) exit(1);
 
@@ -27,7 +27,7 @@ MatAdjProgModular* criaMatAdjProg(int n) {
     return t;
 }
 
-void lerMatAdjProg(MatAdjProgModular *adjMatrix, FILE *arqEnt, int maxCaminhos) {
+void lerMatAdjProgM(MatAdjProgModular *adjMatrix, FILE *arqEnt, int maxCaminhos) {
     int cidadeOrigem, cidadeDestino, pesoCaminho;
     for(int i=0; i<maxCaminhos;i++){
         if(fscanf(arqEnt, "%d %d %d", &cidadeOrigem, &cidadeDestino, &pesoCaminho) != 3){fprintf(stderr, "Erro na entrada.\n");return;}
@@ -39,7 +39,7 @@ void lerMatAdjProg(MatAdjProgModular *adjMatrix, FILE *arqEnt, int maxCaminhos) 
 
 }
 
-void freeMatAdjProg(MatAdjProgModular *freeMat){
+void freeMatAdjProgM(MatAdjProgModular *freeMat){
     if (freeMat == NULL) return;
     if (freeMat->matAdjProgM != NULL) {
         for (int i = 0; i < freeMat->rows_columns; i++) {
