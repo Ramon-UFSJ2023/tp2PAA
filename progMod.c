@@ -125,8 +125,6 @@ void functionProgMod(City *povos, MatAdjProgModular *cidadePovosDist, int maxPes
         }
     }
     fprintf(arqSaida, "\n");
-
-    printf("\n");
     for(int cidade=0; cidade< cidadePovosDist->rows_columns;cidade++){
         for(int distPercorrida=0; distPercorrida< totalDistancias;distPercorrida++){
             free(tabelaDinamica[cidade][distPercorrida]);
